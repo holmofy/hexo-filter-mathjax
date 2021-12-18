@@ -27,7 +27,7 @@ if (config.append_css) {
   hexo.extend.filter.register('after_render:html', (html, { page }) => {
     if (config.every_page || page.mathjax || (page.__index && page.posts.toArray().find(post => post.mathjax))) {
       return html.replace(/<head>(?!<\/head>).+?<\/head>/s, str => str.replace('</head>', `<style>${css}</style></head>`))
-        .replaceAll(/<p>(<mjx-container.*?)<\/p>\s*<p>(<mjx-container.*?)<\/p>(\s*<p>(<mjx-container.*?)<\/p>)*?/g, '<p>$1 $2</p>');
+        .replace(/<p>(<mjx-container.*?)<\/p>\s*<p>(<mjx-container.*?)<\/p>(\s*<p>(<mjx-container.*?)<\/p>)*?/g, '<p>$1 $2</p>');
     }
     return html;
   });
