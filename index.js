@@ -28,7 +28,7 @@ if (config.append_css) {
     if (config.every_page || page.mathjax || (page.__index && page.posts.toArray().find(post => post.mathjax))) {
       return html.replace(/<head>(?!<\/head>).+?<\/head>/s, str => str.replace('</head>', `<style>${css}</style></head>`))
         .replace(/<mjx-container class="MathJax" jax="SVG" display="true">(.*?)<\/mjx-container>/g, '</p>$&<p>')
-        .replace(/<p>\s*?<\/p>/, ' ');
+        .replace(/<p>\s*?<\/p>/g, ' ');
     }
     return html;
   });
